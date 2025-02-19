@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model ClusterMetric {
+  id        Int      @id @default(autoincrement())
+  podName   String
+  cpu       Float
+  memory    Float
+  cost      Float
+  timestamp DateTime @default(now())
+}
+
+model OptimizationResult {
+  id        Int      @id @default(autoincrement())
+  podName   String
+  cpuBefore Float
+  cpuAfter  Float
+  memoryBefore Float
+  memoryAfter  Float
+  costBefore   Float
+  costAfter    Float
+  timestamp    DateTime @default(now())
+}
+
