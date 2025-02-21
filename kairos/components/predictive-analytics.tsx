@@ -1,45 +1,5 @@
-"use client"
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TrendingUp, AlertTriangle, DollarSign } from "lucide-react"
-import { Line } from "react-chartjs-2"
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js"
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
-
-const generateData = (label: string, color: string) => ({
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label,
-      data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 100)),
-      borderColor: color,
-      backgroundColor: color,
-    },
-  ],
-})
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
-      text: "Predictive Analytics",
-    },
-  },
-}
 
 export function PredictiveAnalytics() {
   return (
@@ -54,7 +14,7 @@ export function PredictiveAnalytics() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Line options={options} data={generateData("CPU Usage", "rgb(75, 192, 192)")} />
+            <p>Forecasts CPU, memory, and storage needs based on historical trends and anticipated workloads.</p>
           </CardContent>
         </Card>
         <Card>
@@ -65,7 +25,7 @@ export function PredictiveAnalytics() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Line options={options} data={generateData("Memory Usage", "rgb(255, 99, 132)")} />
+            <p>Identifies potential performance issues before they impact your applications.</p>
           </CardContent>
         </Card>
         <Card>
@@ -76,7 +36,9 @@ export function PredictiveAnalytics() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Line options={options} data={generateData("Cost Savings", "rgb(53, 162, 235)")} />
+            <p>
+              Suggests resource adjustments and scaling strategies to minimize costs without compromising performance.
+            </p>
           </CardContent>
         </Card>
       </div>

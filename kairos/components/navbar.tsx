@@ -1,28 +1,29 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Search } from "lucide-react"
+import { MainNav } from "@/components/navigation-menu"
 
 export function Navbar() {
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/75">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            KAIROS
-          </Link>
-          <div className="space-x-4">
-            <Link href="/features/data-ingestion" className="text-gray-600 hover:text-blue-600">
-              Features
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="text-2xl font-bold text-white">
+              KAIROS
             </Link>
-            <Link href="/architecture" className="text-gray-600 hover:text-blue-600">
-              Architecture
-            </Link>
-            <Link href="/implementation" className="text-gray-600 hover:text-blue-600">
-              Implementation
-            </Link>
-            <Link href="/sandbox" className="text-gray-600 hover:text-blue-600">
-              Sandbox
-            </Link>
-            <Button variant="outline">Contact Us</Button>
+            <div className="hidden lg:block">
+              <MainNav />
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="text-gray-300">
+              <Search className="h-5 w-5" />
+            </Button>
+            <Button variant="ghost" className="text-gray-300">
+              Log in
+            </Button>
+            <Button className="bg-emerald-500 hover:bg-emerald-600">Get Started Free</Button>
           </div>
         </div>
       </div>

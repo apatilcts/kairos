@@ -1,55 +1,70 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Database, Cpu, GitBranch, AlertTriangle, BarChart, Zap } from "lucide-react"
+import { Cpu, BarChart, Gauge, GitBranch, AlertTriangle, Cloud } from "lucide-react"
+import Image from "next/image"
 
 const features = [
   {
-    title: "Data Ingestion Pipeline",
-    description: "Collect metrics from Prometheus, Kubecost, Kubernetes API, and application-specific sources.",
-    icon: Database,
-  },
-  {
-    title: "AI Engine",
-    description: "Train and serve machine learning models for optimal resource configurations and scaling actions.",
+    title: "AI-Powered Optimization",
+    description: "Machine learning models continuously analyze and optimize your Kubernetes resources.",
     icon: Cpu,
+    image: "/placeholder.svg?height=200&width=300",
   },
   {
-    title: "Kubernetes Integration",
-    description: "Seamlessly integrate with VPA, cluster autoscaler, and custom node replacement controller.",
-    icon: GitBranch,
+    title: "Multi-Cloud Support",
+    description: "Seamlessly manage resources across AWS, GCP, Azure, and hybrid environments.",
+    icon: Cloud,
+    image: "/placeholder.svg?height=200&width=300",
   },
   {
-    title: "Monitoring and Alerting",
-    description: "Track performance, cost savings, and resource utilization with a continuous feedback loop.",
-    icon: AlertTriangle,
-  },
-  {
-    title: "Cost Allocation",
-    description: "Visualize and analyze cost allocation across your Kubernetes infrastructure using Kubecost.",
+    title: "Real-Time Monitoring",
+    description: "Track performance metrics and resource utilization in real-time.",
     icon: BarChart,
+    image: "/placeholder.svg?height=200&width=300",
   },
   {
-    title: "Performance Optimization",
-    description: "Continuously improve resource utilization and application performance using AI-driven insights.",
-    icon: Zap,
+    title: "Intelligent Scaling",
+    description: "Automatically scale resources based on workload patterns and demands.",
+    icon: Gauge,
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    title: "GitOps Integration",
+    description: "Integrate with your existing GitOps workflow for consistent deployments.",
+    icon: GitBranch,
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    title: "Proactive Alerts",
+    description: "Get notified of potential issues before they impact your applications.",
+    icon: AlertTriangle,
+    image: "/placeholder.svg?height=200&width=300",
   },
 ]
 
 export function Features() {
   return (
-    <section id="features" className="py-20">
-      <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map((feature, index) => (
-          <Card key={index}>
-            <CardHeader>
-              <feature.icon className="w-10 h-10 text-blue-600 mb-2" />
-              <CardTitle>{feature.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">{feature.description}</p>
-            </CardContent>
-          </Card>
-        ))}
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
+          <p className="text-xl text-gray-600">Everything you need to optimize your Kubernetes infrastructure</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <Card key={index} className="border-2 border-gray-100 overflow-hidden">
+              <div className="relative h-48">
+                <Image src={feature.image || "/placeholder.svg"} alt={feature.title} fill className="object-cover" />
+              </div>
+              <CardHeader>
+                <feature.icon className="h-12 w-12 text-emerald-500 mb-4" />
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   )
